@@ -120,7 +120,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="py-6 text-center text-slate-500 text-sm">
         <p>
-          © {new Date().getFullYear()} Vibe Stock & POS. 
+          © {new Date().getFullYear()} Vibe Stock & POS v1.0 
           Hecho con <span className="text-violet-400">♥</span> para tu negocio.
         </p>
       </footer>
