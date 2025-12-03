@@ -1,6 +1,7 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useFormState } from 'react-dom';
+import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { 
@@ -36,8 +37,10 @@ export default function LoginPage() {
   const isAdmin = roleParam === 'admin';
 
   // Form states
-  const [loginState, loginAction, isLoginPending] = useActionState(login, initialState);
-  const [signupState, signupAction, isSignupPending] = useActionState(signup, initialState);
+  const [loginState, loginAction] = useFormState(login, initialState);
+  const [signupState, signupAction] = useFormState(signup, initialState);
+  const [isLoginPending, setLoginPending] = useState(false);
+  const [isSignupPending, setSignupPending] = useState(false);
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
@@ -96,7 +99,11 @@ export default function LoginPage() {
           </div>
 
           {/* Login Form */}
-          <form id="login-form" action={loginAction} className="space-y-5">
+          <form id="login-form" action={async (formData) => {
+            setLoginPending(true);
+            await loginAction(formData);
+            setLoginPending(false);
+          }} className="space-y-5">
             {/* Error Alert */}
             {loginState.error && (
               <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30">
@@ -148,7 +155,11 @@ export default function LoginPage() {
           </div>
 
           {/* Signup Form */}
-          <form id="signup-form" action={signupAction} className="space-y-5">
+          <form id="signup-form" action={async (formData) => {
+            setSignupPending(true);
+            await signupAction(formData);
+            setSignupPending(false);
+          }} className="space-y-5">
             {/* Error Alert */}
             {signupState.error && (
               <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30">
