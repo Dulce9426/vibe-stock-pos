@@ -6,6 +6,9 @@ import Link from 'next/link';
 import { getProductsWithVariants, getCategories } from './actions';
 import { POSClient } from './pos-client';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 // -----------------------------------------------------------------------------
 // POS Page (Server Component)
 // -----------------------------------------------------------------------------

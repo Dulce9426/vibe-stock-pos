@@ -3,6 +3,9 @@ import { createClient } from '@/utils/supabase/server';
 import { AdminSidebar } from '@/components/admin/admin-sidebar';
 import { UserButton } from '@/components/auth/user-button';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 // -----------------------------------------------------------------------------
 // Admin Layout
 // -----------------------------------------------------------------------------

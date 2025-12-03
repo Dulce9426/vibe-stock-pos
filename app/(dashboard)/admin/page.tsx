@@ -13,6 +13,9 @@ import {
   getTopProducts,
 } from './actions';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 // -----------------------------------------------------------------------------
 // Loading Skeletons
 // -----------------------------------------------------------------------------
