@@ -36,7 +36,7 @@ export default async function POSPage() {
     getCategories(),
   ]);
 
-  const isAdmin = profile?.role === 'admin';
+  const isAdmin = String(profile?.role).toLowerCase() === 'admin';
 
   return (
     <div className="h-screen flex flex-col overflow-hidden">

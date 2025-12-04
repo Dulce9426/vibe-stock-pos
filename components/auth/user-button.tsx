@@ -67,7 +67,7 @@ export function UserButton({ user, profile }: UserButtonProps) {
             {displayName}
           </p>
           <p className="text-xs text-slate-500 leading-tight">
-            {profile?.role === 'admin' ? 'Administrador' : 'Cajero'}
+            {String(profile?.role).toLowerCase() === 'admin' ? 'Administrador' : 'Cajero'}
           </p>
         </div>
 

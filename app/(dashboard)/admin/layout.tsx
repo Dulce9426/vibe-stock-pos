@@ -32,7 +32,7 @@ export default async function AdminLayout({
     .single();
 
   // Verificar que sea admin
-  if (profile?.role !== 'admin') {
+  if (String(profile?.role).toLowerCase() !== 'admin') {
     redirect('/pos');
   }
 
