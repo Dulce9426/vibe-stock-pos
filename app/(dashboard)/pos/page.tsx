@@ -24,11 +24,17 @@ export default async function POSPage() {
   }
 
   // Obtener perfil del usuario
-  const { data: profile } = await supabase
+  const { data: profile, error: profileError } = await supabase
     .from('profiles')
     .select('*')
     .eq('id', user.id)
     .single();
+
+  // Debug: Ver qué devuelve Supabase
+  console.log('User ID:', user.id);
+  console.log('Profile:', JSON.stringify(profile));
+  console.log('Profile Error:', profileError?.message);
+  console.log('Role:', profile?.role);
 
   // Obtener productos y categorías
   const [products, categories] = await Promise.all([
